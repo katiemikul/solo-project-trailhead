@@ -39,6 +39,24 @@ router.get('/', (req, res) => {
     });
 });
 
+//Route to search City/State in Database
+// router.get('/', (req, res) => {
+//     if(req.isAuthenticated()) {
+//         let queryText = `SELECT * FROM "trails" WHERE location = $1`;
+//         pool.query(queryText, [req.user.location]).then((result) => {
+//             res.send(result.rows);
+//         }).catch((error) => {
+//             console.log(error);
+//             res.sendStatus(500);
+//         });
+//     } else {
+//         res.sendStatus(403);
+//     }
+//     console.log('/search GET route');
+//     console.log('is authenticated?', req.isAuthenticated());
+//     console.log('user', req.user);
+    
+// });
 /**
  * POST route template
  */

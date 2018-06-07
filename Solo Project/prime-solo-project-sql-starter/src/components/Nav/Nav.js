@@ -11,7 +11,7 @@ const Nav = () => (
           </Link>
         </li>
         <li>
-          <Link to="/favorite">
+          <Link to="/trails">
             View My Trails
           </Link>
         </li>

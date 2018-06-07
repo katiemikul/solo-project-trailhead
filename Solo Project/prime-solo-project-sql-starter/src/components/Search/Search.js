@@ -21,9 +21,9 @@ class Search extends Component {
         }
     }
 
-    //Get request to Hiking Project API
+    //Get request to Database
     searchTrails = () => {
-        axios.get('/api/api').then(response => {
+        axios.get('/api/search').then(response => {
             console.log(response.data);
             this.setState({
                 searchTrailsArray: response.data
@@ -39,6 +39,25 @@ class Search extends Component {
         if (!this.props.user.isLoading && this.props.user.userName === null) {
             this.props.history.push('home');
         }
+    }
+
+    handleChange = (propertyName) => (event) => {
+        this.setState({
+            newTrailsArray: {
+                ...this.state.searchTrailsArray,
+                [propertyName]: event.target.value,
+            }
+        });
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log('sending search request to database')
+
+        // const action = { type: 'SEARCH_TRAILS', payload: this.state.searchTrailsArray };
+        // this.props.dispatch(action);
+
+        this.props.history.push('/success')
     }
 
     logout = () => {
@@ -64,25 +83,21 @@ class Search extends Component {
 
         return (
             <div>
-                <form className="Search">
+
                 <Nav />
                 {content}
-
+                <form className="Search" onSubmit={this.handleSubmit}>
                 <h1>
                     Search For Trails
             </h1>
-                <input placeholder='Latitude'></input>
-                <input placeholder='Longitude'></input>
-                <input placeholder='City'></input>
-                <input placeholder='State'></input>
-                <button>Search</button>
+                <input onChange={this.handleChange('location')} value={this.state.searchTrailsArray.location}placeholder='City, State'></input>
+                <Button onClick={this.handleSubmit}>Search Trails</Button>
                 <br />
                 Search Results:
                 {JSON.stringify(this.state.searchTrailsArray)}
             </form>
             <br />
-            <form className="SearchResults">
-                <Table class>
+                <Table className="SearchResults">
                     <TableHead>
                         <TableRow>
                             <TableCell>
@@ -97,36 +112,22 @@ class Search extends Component {
                             <TableCell>
                                 Length
                             </TableCell>
-                            <TableCell>
-                                Summary
-                             </TableCell>
-                            <TableCell>
-                                Ascent
-                            </TableCell>
-                            <TableCell>
-                                Descent
-                            </TableCell>
-                            <TableCell>
-                                Condition Status
-                            </TableCell>
-                            <TableCell>
-                            </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.state.classFeedback.map((student, i) =>
+                        {this.state.searchTrailsArray.map((trail, i) =>
                             <TableRow key={i}>
                                 <TableCell>
-                                    {student.feeling}
+                                    {trail.trail_name}
                                 </TableCell>
                                 <TableCell>
-                                    {student.understanding}
+                                    {trail.location}
                                 </TableCell>
                                 <TableCell>
-                                    {student.support}
+                                    {trail.length}
                                 </TableCell>
                                 <TableCell>
-                                    {student.comments}
+                                    {trail.difficulty}
                                 </TableCell>
                                 <TableCell>
                                     <Button>Save to Favorites</Button>
@@ -135,7 +136,6 @@ class Search extends Component {
                         )}
                     </TableBody>
                 </Table>
-                </form>
             </div>
         
       );

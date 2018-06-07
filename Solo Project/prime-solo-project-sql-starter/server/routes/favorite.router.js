@@ -8,7 +8,7 @@ const axios = require('axios');
  */
 //Get route from database to Favorite Page
 router.get('/', (req, res) => {
-        pool.query(`SELECT * FROM "favorite";`)
+        pool.query(`SELECT * FROM "trails";`)
         .then((results) => {
             res.send(results.rows)
             console.log(results)

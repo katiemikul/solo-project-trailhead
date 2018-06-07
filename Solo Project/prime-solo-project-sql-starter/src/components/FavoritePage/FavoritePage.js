@@ -23,7 +23,7 @@ class FavoritePage extends Component {
 
 //Gets trails from the database
     getTrails = () => {
-        axios.get('/api/trails').then(response => {
+        axios.get('/api/favorite').then(response => {
             console.log(response.data);
             this.setState({
                 trailsArray: response.data
