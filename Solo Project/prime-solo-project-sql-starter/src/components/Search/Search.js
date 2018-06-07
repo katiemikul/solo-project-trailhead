@@ -34,21 +34,42 @@ class Search extends Component {
         });
     }
 
+// componentDidMount() {
+//     this.searchTrails();
+// }
+
     componentDidUpdate() {
-        this.searchTrails();
-        if (!this.props.user.isLoading && this.props.user.userName === null) {
-            this.props.history.push('home');
-        }
+        // this.searchTrails();
+        // if (!this.props.user.isLoading && this.props.user.userName === null) {
+        //     this.props.history.push('home');
+        // }
     }
 
     handleChange = (propertyName) => (event) => {
         this.setState({
             newTrailsArray: {
-                ...this.state.searchTrailsArray,
+                ...this.state.newTrailsArray,
                 [propertyName]: event.target.value,
             }
         });
     }
+    sendUserToCorrespondingPage = (urlString) => {
+        return () => {
+          this.props.history.push(urlString);
+        }
+      };
+
+    // getTrailDetails = () => {
+    //     axios.get('/api/search').then(response => {
+    //         console.log(response.data);
+    //         this.setState({
+    //             searchTrailsArray: response.data
+    //         });
+    //     }).catch(error => {
+    //         alert('There was an error getting requested trails!');
+    //         console.log(`ERROR trying to GET api/trails: ${error}`);
+    //     });
+    // }
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -91,10 +112,10 @@ class Search extends Component {
                     Search For Trails
             </h1>
                 <input onChange={this.handleChange('location')} value={this.state.searchTrailsArray.location}placeholder='City, State'></input>
-                <Button onClick={this.handleSubmit}>Search Trails</Button>
+                <Button onClick={this.searchTrails}>Search Trails</Button>
                 <br />
                 Search Results:
-                {JSON.stringify(this.state.searchTrailsArray)}
+                {/* {JSON.stringify(this.state.searchTrailsArray)} */}
             </form>
             <br />
                 <Table className="SearchResults">
@@ -130,7 +151,7 @@ class Search extends Component {
                                     {trail.difficulty}
                                 </TableCell>
                                 <TableCell>
-                                    <Button>Save to Favorites</Button>
+                                    <Button id="trail" variant="raised" onClick={this.sendUserToCorrespondingPage('/details')}>View Trail Details</Button>
                                 </TableCell>
                             </TableRow>
                         )}

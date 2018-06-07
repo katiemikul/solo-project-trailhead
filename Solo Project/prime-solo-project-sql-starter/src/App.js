@@ -13,6 +13,7 @@ import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
 import Search from './components/Search/Search';
 import FavoritePage from './components/FavoritePage/FavoritePage';
+import TrailDetails from './components/TrailDetails/TrailDetails';
 
 import './styles/main.css';
 
@@ -50,6 +51,11 @@ const App = () => (
           component={FavoritePage}
         />
        
+       <Route
+          path="/details"
+          component={TrailDetails}
+        />
+
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 
