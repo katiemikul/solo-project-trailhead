@@ -34,6 +34,25 @@ class Search extends Component {
         });
     }
 
+    // findTrails = () => {
+    //     axios.get('/api/search', (req, res) => {
+    //         axios({
+    //             method: 'GET',
+    //             params: {
+    //                 location: '',
+    //             }
+    //         }).then(response => {
+    //             console.log(response.data);
+    //             this.setState({
+    //                 trailSearchArray: response.data
+    //             });
+    //         }).catch(error => {
+    //             alert('There was an error getting requested trails!');
+    //         console.log(`ERROR trying to GET api/trails: ${error}`);
+    //         });
+    //     })
+    // }
+
 // componentDidMount() {
 //     this.searchTrails();
 // }
@@ -128,10 +147,10 @@ class Search extends Component {
                                 Location
                             </TableCell>
                             <TableCell>
-                                Difficulty
+                                Length
                              </TableCell>
                             <TableCell>
-                                Length
+                                Difficulty
                             </TableCell>
                         </TableRow>
                     </TableHead>

@@ -44,6 +44,24 @@ class FavoritePage extends Component {
         }
     }
 
+    sendUserToCorrespondingPage = (urlString) => {
+        return () => {
+          this.props.history.push(urlString);
+        }
+      };
+
+    // getTrailDetails = () => {
+    //     axios.get('/api/search').then(response => {
+    //         console.log(response.data);
+    //         this.setState({
+    //             searchTrailsArray: response.data
+    //         });
+    //     }).catch(error => {
+    //         alert('There was an error getting requested trails!');
+    //         console.log(`ERROR trying to GET api/trails: ${error}`);
+    //     });
+    // }
+
     logout = () => {
         //   this.props.dispatch(triggerLogout());
         this.props.history.push('home');
@@ -73,64 +91,47 @@ class FavoritePage extends Component {
                 <h1>
                     My Saved Trails:
             </h1>
-            {JSON.stringify(this.state.trailsArray)}
+            {/* {JSON.stringify(this.state.trailsArray)} */}
+            <Table className="SavedTrails">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>
+                                Trail Name
+                            </TableCell>
+                            <TableCell>
+                                Location
+                            </TableCell>
+                            <TableCell>
+                                Length
+                             </TableCell>
+                            <TableCell>
+                                Difficulty
+                            </TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this.state.trailsArray.map((trail, i) =>
+                            <TableRow key={i}>
+                                <TableCell>
+                                    {trail.trail_name}
+                                </TableCell>
+                                <TableCell>
+                                    {trail.location}
+                                </TableCell>
+                                <TableCell>
+                                    {trail.length}
+                                </TableCell>
+                                <TableCell>
+                                    {trail.difficulty}
+                                </TableCell>
+                                <TableCell>
+                                    <Button id="trail" variant="raised" onClick={this.sendUserToCorrespondingPage('/details')}>View Trail Details</Button>
+                                </TableCell>
+                            </TableRow>
+                        )}
+                    </TableBody>
+                </Table>
             </div>
-
-        //     <div className="SearchResults">
-        //         <Table>
-        //             <TableHead>
-        //                 <TableRow>
-        //                     <TableCell>
-        //                         Trail Name
-        // </TableCell>
-        //                     <TableCell>
-        //                         Location
-        // </TableCell>
-        //                     <TableCell>
-        //                         Difficulty
-        // </TableCell>
-        //                     <TableCell>
-        //                         Length
-        // </TableCell>
-        //                     <TableCell>
-        //                         Summary
-        // </TableCell>
-        //                     <TableCell>
-        //                         Ascent
-        // </TableCell>
-        //                     <TableCell>
-        //                         Descent
-        // </TableCell>
-        //                     <TableCell>
-        //                         Condition Status
-        // </TableCell>
-        //                     <TableCell>
-        //                     </TableCell>
-        //                 </TableRow>
-        //             </TableHead>
-        //             <TableBody>
-        //                 {this.state.classFeedback.map((student, i) =>
-        //                     <TableRow key={i}>
-        //                         <TableCell>
-        //                             {student.feeling}
-        //                         </TableCell>
-        //                         <TableCell>
-        //                             {student.understanding}
-        //                         </TableCell>
-        //                         <TableCell>
-        //                             {student.support}
-        //                         </TableCell>
-        //                         <TableCell>
-        //                             {student.comments}
-        //                         </TableCell>
-        //                         <TableCell>
-        //                             <Button>Save to Favorites</Button>
-        //                         </TableCell>
-        //                     </TableRow>
-        //                 )}
-        //             </TableBody>
-        //         </Table>
-        //     </div>
        
       );
     }
