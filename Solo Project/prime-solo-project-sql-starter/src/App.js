@@ -12,8 +12,10 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
 import Search from './components/Search/Search';
+import FavoritePage from './components/FavoritePage/FavoritePage';
 
 import './styles/main.css';
+
 
 const App = () => (
   <div>
@@ -42,6 +44,12 @@ const App = () => (
           path="/search"
           component={Search}
         />
+
+ <Route
+          path="/trails"
+          component={FavoritePage}
+        />
+       
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
 

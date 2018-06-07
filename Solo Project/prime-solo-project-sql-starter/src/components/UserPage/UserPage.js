@@ -57,8 +57,8 @@ class UserPage extends Component {
           >
             Welcome, { this.props.user.userName }!
           </h1>
-          <button>Search</button>
-          <button>View My Trails</button>
+          {/* <button>Search</button>
+          <button>View My Trails</button> */}
           <br/>
           <button
             onClick={this.logout}
