@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Nav from '../../components/Nav/Nav';
+import FeaturedTrails from '../../components/FeaturedTrails/FeaturedTrails';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
@@ -14,9 +15,6 @@ const mapStateToProps = state => ({
 class UserPage extends Component {
   constructor() {
     super();
-    this.state = {
-        trailArray: [],
-    }
   }
 
   componentDidMount() {
@@ -34,18 +32,6 @@ class UserPage extends Component {
     // this.props.history.push('home');
   }
 
-//   getTrails = () => {
-//     axios.get('https://www.hikingproject.com/data').then(response => {
-//         console.log(response.data);
-//         this.setState({
-//             trailArray: response.data
-//         });
-//     }).catch(error => {
-//         alert('There was an error getting the requested trails!');
-//         console.log(`ERROR trying to GET /api/trails: ${error}`);
-//     });
-// }
-
   render() {
     let content = null;
 
@@ -60,11 +46,11 @@ class UserPage extends Component {
           {/* <button>Search</button>
           <button>View My Trails</button> */}
           <br/>
-          <button
+          {/* <button
             onClick={this.logout}
           >
             Log Out
-          </button>
+          </button> */}
         </div>
       );
     }
@@ -73,6 +59,8 @@ class UserPage extends Component {
       <div>
         <Nav />
         { content }
+
+        <FeaturedTrails />
       </div>
     );
   }

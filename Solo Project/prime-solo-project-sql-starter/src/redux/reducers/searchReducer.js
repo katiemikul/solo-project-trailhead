@@ -6,7 +6,7 @@ const trail_name = {
 
 const searchDetails = (state = trail_name, action) => {
     if (action.type === 'DETAILED_TRAILS') {
-        return {...state, ...action.payload};
+        return action.payload;
     // } else if (action.type === 'FEEDBACK_COMPREHENSION') {
 
     //     return {...state, ...action.payload};

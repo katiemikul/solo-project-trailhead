@@ -149,7 +149,7 @@ class Search extends Component {
                                     {trail.difficulty}
                                 </TableCell>
                                 <TableCell>
-                                    <Button onClick={this.handleSubmit} onChange={this.handleChange('trail_name')} value={this.state.trail_name} id="trail" variant="raised" onClick={this.sendUserToCorrespondingPage('/details')}>View Trail Details</Button>
+                                    <Button onClick={this.handleSubmit} value={this.state.trail_name} id="trail" variant="raised">View Trail Details</Button>
                                 </TableCell>
                             </TableRow>
                         )}

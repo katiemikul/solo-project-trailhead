@@ -16,6 +16,11 @@ const Nav = () => (
           </Link>
         </li>
       </ul>
+      <button
+            onClick={this.logout}
+          >
+            Log Out
+          </button>
     </div>
   </div>
 );

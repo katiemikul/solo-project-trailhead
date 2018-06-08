@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button';
 
 const mapStateToProps = state => ({
     user: state.user,
+    search: state.searchTrails,
 });
 
 class TrailDetails extends Component {
@@ -28,6 +29,7 @@ class TrailDetails extends Component {
 
     //Get request to Database
     detailedTrail = () => {
+        console.log(this.props.search);
         axios.get('/api/search', { params: { trail_name: this.props.trail_name } }).then(response => {
             console.log(response.data);
             console.log(this.props.trail_name);
