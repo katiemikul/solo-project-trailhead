@@ -17,13 +17,15 @@ class Search extends Component {
     constructor() {
         super();
         this.state = {
-            searchTrailsArray: [],
+            location: '',
+            searchTrailsArray: [
+            ],
         }
     }
 
     //Get request to Database
     searchTrails = () => {
-        axios.get('/api/search').then(response => {
+        axios.get('/api/search', {params: {location: this.state.location}}).then(response => {
             console.log(response.data);
             this.setState({
                 searchTrailsArray: response.data
@@ -66,10 +68,7 @@ class Search extends Component {
 
     handleChange = (propertyName) => (event) => {
         this.setState({
-            newTrailsArray: {
-                ...this.state.newTrailsArray,
                 [propertyName]: event.target.value,
-            }
         });
     }
     sendUserToCorrespondingPage = (urlString) => {
@@ -130,7 +129,7 @@ class Search extends Component {
                 <h1>
                     Search For Trails
             </h1>
-                <input onChange={this.handleChange('location')} value={this.state.searchTrailsArray.location}placeholder='City, State'></input>
+                <input onChange={this.handleChange('location')} value={this.state.location} placeholder='City, State'></input>
                 <Button onClick={this.searchTrails}>Search Trails</Button>
                 <br />
                 Search Results:

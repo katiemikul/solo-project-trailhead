@@ -30,7 +30,8 @@ const axios = require('axios');
 
 router.get('/', (req, res) => {
     let param = req.query.location;
-    pool.query(`SELECT * FROM "trails" WHERE "location" = 'Boulder, Colorado';`)
+    console.log(param);
+    pool.query(`SELECT * FROM "trails" WHERE "location" = $1;`, [param])
     .then((results) => {
         res.send(results.rows)
         console.log(results)
