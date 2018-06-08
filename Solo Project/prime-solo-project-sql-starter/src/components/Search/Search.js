@@ -17,6 +17,7 @@ class Search extends Component {
     constructor() {
         super();
         this.state = {
+            trail_name: '',
             location: '',
             searchTrailsArray: [
             ],
@@ -55,19 +56,9 @@ class Search extends Component {
     //     })
     // }
 
-// componentDidMount() {
-//     this.searchTrails();
-// }
-
-    componentDidUpdate() {
-        // this.searchTrails();
-        // if (!this.props.user.isLoading && this.props.user.userName === null) {
-        //     this.props.history.push('home');
-        // }
-    }
-
     handleChange = (propertyName) => (event) => {
         this.setState({
+                trail_name: '',
                 [propertyName]: event.target.value,
         });
     }
@@ -77,24 +68,14 @@ class Search extends Component {
         }
       };
 
-    // getTrailDetails = () => {
-    //     axios.get('/api/search').then(response => {
-    //         console.log(response.data);
-    //         this.setState({
-    //             searchTrailsArray: response.data
-    //         });
-    //     }).catch(error => {
-    //         alert('There was an error getting requested trails!');
-    //         console.log(`ERROR trying to GET api/trails: ${error}`);
-    //     });
-    // }
-
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log('sending search request to database')
+        console.log('selecting trail details')
 
-        // const action = { type: 'SEARCH_TRAILS', payload: this.state.searchTrailsArray };
-        // this.props.dispatch(action);
+        const action = { type: 'DETAILED_TRAILS', payload: this.state.trail_name};
+        this.props.dispatch(action);
+
+        console.log(this.state.trail_name);
 
         this.props.history.push('/success')
     }
@@ -132,8 +113,7 @@ class Search extends Component {
                 <input onChange={this.handleChange('location')} value={this.state.location} placeholder='City, State'></input>
                 <Button onClick={this.searchTrails}>Search Trails</Button>
                 <br />
-                Search Results:
-                {/* {JSON.stringify(this.state.searchTrailsArray)} */}
+                
             </form>
             <br />
                 <Table className="SearchResults">
@@ -169,7 +149,7 @@ class Search extends Component {
                                     {trail.difficulty}
                                 </TableCell>
                                 <TableCell>
-                                    <Button id="trail" variant="raised" onClick={this.sendUserToCorrespondingPage('/details')}>View Trail Details</Button>
+                                    <Button onClick={this.handleSubmit} onChange={this.handleChange('trail_name')} value={this.state.trail_name} id="trail" variant="raised" onClick={this.sendUserToCorrespondingPage('/details')}>View Trail Details</Button>
                                 </TableCell>
                             </TableRow>
                         )}
