@@ -22,19 +22,18 @@ class TrailDetails extends Component {
         this.state = {
             trail_name: '',
             location: '',
-            searchTrailsArray: [
-            ],
+            searchTrailsArray: {},
         }
     }
 
     //Get request to Database
     detailedTrail = () => {
         console.log(this.props.search);
-        axios.get('/api/search', { params: { trail_name: this.props.trail_name } }).then(response => {
+        axios.get('/api/search', { params: { trail_name: this.props.search.searchDetails } }).then(response => {
             console.log(response.data);
             console.log(this.props.trail_name);
             this.setState({
-                searchTrailsArray: response.data
+                searchTrailsArray: response.data[0]
             });
         }).catch(error => {
             alert('There was an error getting requested trails!');
@@ -44,6 +43,16 @@ class TrailDetails extends Component {
 
     componentDidMount() {
         this.detailedTrail();
+    }
+
+    componentWillUpdate() {
+        if (this.props.trail_name === this.props.search.searchDetails.trail_name) {
+            console.log('it worked!!');
+        }
+        else if (this.props.trail_name != this.props.search.searchDetails.trail_name) {
+            console.log('there was an error');
+        };
+            
     }
 
     render() {
@@ -60,4 +69,4 @@ class TrailDetails extends Component {
     }
 }
 
-export default connect(mapStateToProps)(TrailDetails);///
+export default connect(mapStateToProps)(TrailDetails);

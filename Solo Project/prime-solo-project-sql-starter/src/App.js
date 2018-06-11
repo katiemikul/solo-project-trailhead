@@ -16,6 +16,7 @@ import FavoritePage from './components/FavoritePage/FavoritePage';
 import TrailDetails from './components/TrailDetails/TrailDetails';
 import FeaturedTrails from './components/FeaturedTrails/FeaturedTrails';
 
+
 import './styles/main.css';
 
 

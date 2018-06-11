@@ -8,10 +8,24 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+
 const styles = {
   card: {
+    display: 'inline-block',
+    overflow: 'hidden',
+    float: 'left',
+    height: 'auto',
+    // border-radius: '5px',
+    // background-color: '#fff',
+    // box-shadow: '0 1.5rem 4rem rgba(0, 0, 0, 0.15)',
+    padding: '10px',
+    margin: '10px',
+    border: '2px solid black',
+    textAlign: 'center',
     maxWidth: 345,
+    align: 'center',
   },
+
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
@@ -22,11 +36,12 @@ function SimpleMediaCard(props) {
   const { classes } = props;
   return (
     <div>
-      <Card className={classes.card}>
+        <h2>June's Featured Hikes:</h2>
+      <Card className="card">
         <CardMedia
           style={{height: "250px"}}
           image="trailpics/trail1.jpg"
-          title="Contemplative Reptile"
+          title="Sunshine Lions Liar Loop"
         />
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
@@ -46,11 +61,11 @@ function SimpleMediaCard(props) {
         </CardActions>
       </Card>
       <br />
-      <Card className={classes.card}>
+      <Card className="card">
         <CardMedia
           style={{height: "250px"}}
           image="trailpics/pawnee.jpg"
-          title="Contemplative Reptile"
+          title="Pawnee Loop"
         />
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
@@ -70,11 +85,11 @@ function SimpleMediaCard(props) {
         </CardActions>
       </Card>
       <br />
-      <Card className={classes.card}>
+      <Card className="card">
         <CardMedia
           style={{height: "250px"}}
           image="trailpics/hell.jpg"
-          title="Contemplative Reptile"
+          title="Hell Canyon"
         />
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
@@ -93,6 +108,31 @@ function SimpleMediaCard(props) {
           </Button>
         </CardActions>
       </Card>
+<br/>
+<Card className="card">
+        <CardMedia
+          style={{height: "250px"}}
+          image="trailpics/everest.jpg"
+          title="Everest"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="headline" component="h2">
+            Everest Base Camp Trek
+          </Typography>
+          <Typography component="p">
+          This unique trek starts with a spectacular flight from Kathmandu to Lukla, from where we take an unusual route through the heart of Sherpa country. This creates a much more interesting trek to the highest mountain in the world. The long, arduous trek culminates with an early morning ascent of Kala Pattar (18,188ft/5,545m), which overlooks the Base Camp and offers superb views of Everest, Lhotse, Nuptse, and Makalu.
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small" color="primary">
+            See Trail Details
+          </Button>
+          <Button size="small" color="primary">
+            Save
+          </Button>
+        </CardActions>
+      </Card>
+
     </div>
   );
 }

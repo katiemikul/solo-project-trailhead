@@ -8,6 +8,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
+import SearchResults from '../../components/SearchResults/SearchResults';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -68,17 +69,17 @@ class Search extends Component {
         }
       };
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        console.log('selecting trail details')
+    // handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     console.log('selecting trail details')
 
-        const action = { type: 'DETAILED_TRAILS', payload: this.state.trail_name};
-        this.props.dispatch(action);
+    //     const action = { type: 'DETAILED_TRAILS', payload: this.state.trail_name};
+    //     this.props.dispatch(action);
 
-        console.log(this.state.trail_name);
+    //     console.log(this.state.trail_name);
 
-        this.props.history.push('/success')
-    }
+    //     this.props.history.push('/success')
+    // }
 
     logout = () => {
         //   this.props.dispatch(triggerLogout());
@@ -116,6 +117,7 @@ class Search extends Component {
                 
             </form>
             <br />
+
                 <Table className="SearchResults">
                     <TableHead>
                         <TableRow>
@@ -136,21 +138,7 @@ class Search extends Component {
                     <TableBody>
                         {this.state.searchTrailsArray.map((trail, i) =>
                             <TableRow key={i}>
-                                <TableCell>
-                                    {trail.trail_name}
-                                </TableCell>
-                                <TableCell>
-                                    {trail.location}
-                                </TableCell>
-                                <TableCell>
-                                    {trail.length}
-                                </TableCell>
-                                <TableCell>
-                                    {trail.difficulty}
-                                </TableCell>
-                                <TableCell>
-                                    <Button onClick={this.handleSubmit} value={this.state.trail_name} id="trail" variant="raised">View Trail Details</Button>
-                                </TableCell>
+                             <SearchResults name={trail.trail_name} location={trail.location} length={trail.length} difficulty={trail.difficulty} history={this.props.history}/>
                             </TableRow>
                         )}
                     </TableBody>

@@ -1,5 +1,5 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 
 .instructions h1 {
@@ -8,7 +8,7 @@ body {
 }
 
 .instructions {
-    background-color: #00acb0;
+    background-color: #275F64;
     padding: 5px;
     color: #ece7e7;
 }
@@ -48,7 +48,7 @@ input[type="submit"] {
 }
 
 .navbar {
-  background-color: #00acb0;
+  background-color: #124751;
   width: 100%;
   border-radius: 0px;
 }
@@ -80,5 +80,23 @@ li a:hover {
 }
 
 classes.card {
-    align-content: center;
+align-items: center;
 }
+
+#react-root {
+    max-width: 90%;
+    margin: auto; 
+}
+/* .card {
+    display: inline-block;
+    overflow: hidden;
+    float: left;
+    height: auto;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid black;
+    text-align: center;
+ } */
