@@ -1,5 +1,6 @@
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif
+    /* background-image: url("/public/trailpics/hiking\ trail\ with\ lake\ and\ sunshine.jpg"); */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .instructions h1 {
@@ -84,6 +85,7 @@ align-items: center;
 }
 
 #react-root {
+    /* background-image: url("/public/trailpics/road\ hike.jpeg"); */
     max-width: 90%;
     margin: auto; 
 }

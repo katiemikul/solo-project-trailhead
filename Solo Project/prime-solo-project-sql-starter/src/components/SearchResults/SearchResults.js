@@ -40,7 +40,23 @@ class SearchResults extends Component {
     render() {
 
         return (
-
+            <Table className="SearchResults">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>
+                                Trail Name
+                            </TableCell>
+                            <TableCell>
+                                Location
+                            </TableCell>
+                            <TableCell>
+                                Length
+                             </TableCell>
+                            <TableCell>
+                                Difficulty
+                            </TableCell>
+                        </TableRow>
+                    </TableHead>
             <TableRow>
                 <TableCell>
                     {this.props.name}
@@ -58,7 +74,7 @@ class SearchResults extends Component {
                     <Button onClick={this.handleSubmit} value={this.props.name} id="trail" variant="raised">View Trail Details</Button>
                 </TableCell>
             </TableRow>
-
+    </Table>
         );
     }
 }

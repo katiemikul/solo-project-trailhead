@@ -107,7 +107,7 @@ class Search extends Component {
 
                 <Nav />
                 {content}
-                <form className="Search" onSubmit={this.handleSubmit}>
+        <body className="Search" onSubmit={this.handleSubmit}>
                 <h1>
                     Search For Trails
             </h1>
@@ -115,7 +115,7 @@ class Search extends Component {
                 <Button onClick={this.searchTrails}>Search Trails</Button>
                 <br />
                 
-            </form>
+            </body>
             <br />
 
                 <Table className="SearchResults">

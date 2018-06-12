@@ -22,19 +22,36 @@ class TrailDetails extends Component {
         this.state = {
             trail_name: '',
             location: '',
-            searchTrailsArray: {},
+            detailTrail: {},
+            trailInfo: {},
         }
     }
 
     //Get request to Database
     detailedTrail = () => {
         console.log(this.props.search);
-        axios.get('/api/search', { params: { trail_name: this.props.search.searchDetails } }).then(response => {
-            console.log(response.data);
-            console.log(this.props.trail_name);
+        axios.get('/api/detail', { params: { trail_name: this.props.search.searchDetails } }).then(response => {
+            console.log(response.data[0].trail_name);
+            console.log(this.props.search.searchDetails);
             this.setState({
-                searchTrailsArray: response.data[0]
+                detailTrail: response.data[0]
             });
+            this.trailInfo();
+           
+        }).catch(error => {
+            alert('There was an error getting requested trails!');
+            console.log(`ERROR trying to GET api/trails: ${error}`);
+        });
+    }
+
+    trailInfo = () => {
+        axios.get('/api/detail', { params: {trail_name: this.state.detailTrail.trail_name } }).then(response => {
+            console.log(response.data[0].trail_name);
+            console.log(response.data);
+            this.setState({
+                trailInfo: response.data
+            });
+           
         }).catch(error => {
             alert('There was an error getting requested trails!');
             console.log(`ERROR trying to GET api/trails: ${error}`);
@@ -45,25 +62,25 @@ class TrailDetails extends Component {
         this.detailedTrail();
     }
 
-    componentWillUpdate() {
-        if (this.props.trail_name === this.props.search.searchDetails.trail_name) {
-            console.log('it worked!!');
-        }
-        else if (this.props.trail_name != this.props.search.searchDetails.trail_name) {
-            console.log('there was an error');
-        };
-            
-    }
-
     render() {
-        let content = null;
+        // let content = null;
+        console.log(this.state.detailTrail.trail_name);
+            console.log(this.props.search.searchDetails);
+            if (this.state.detailTrail.trail_name === this.props.search.searchDetails) {
+                console.log('it worked!!');
+                // this.trailInfo();
+            }
+            else if (this.props.search !== this.props.search.searchDetails.trail_name) {
+                console.log('there was an error');
+            };
         return (
             <div>
                 <Nav />
-                {content}
+                {/* {content} */}
 
                 <p>Trail Details</p>
-                {JSON.stringify(this.props.trail_name)}
+                {JSON.stringify(this.state.detailTrail.trail_name)}
+                {JSON.stringify(this.state.trailInfo)}
             </div>
         );
     }

@@ -42,20 +42,6 @@ router.get('/', (req, res) => {
     });
 });
 
-//Get Request for Trail Details based on trail_name
-router.get('/', (req, res) => {
-    let param = req.query.trail_name;
-    console.log(param);
-    pool.query(`SELECT * FROM "trails" WHERE "trail_name" = $1;`, [param])
-    .then((results) => {
-        res.send(results.rows)
-        console.log(results)
-    })
-    .catch((error) => {
-        console.log('error with GET to /search details results', error);
-    });
-});
-
 /**
  * POST route template
  */
