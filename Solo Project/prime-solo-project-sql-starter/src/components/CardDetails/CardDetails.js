@@ -43,10 +43,16 @@ function SimpleMediaCard(props) {
           Difficulty: {props.trailInfo.difficulty}
           </Typography>
           <Typography component="p">
-          {props.trailInfo.high}
+          Elevation High: {props.trailInfo.high}
           </Typography>
           <Typography component="p">
-          {props.trailInfo.low}
+          Elevation Low: {props.trailInfo.low}
+          </Typography>
+          <Typography component="p">
+          Longitude: {props.trailInfo.longitude}
+          </Typography>
+          <Typography component="p">
+          Latitude: {props.trailInfo.latitude}
           </Typography>
           <Typography component="p">
           Trail Condition: {props.trailInfo.condition_status}
@@ -57,7 +63,7 @@ function SimpleMediaCard(props) {
         </CardContent>
         <CardActions>
           <Button size="small" color="primary">
-            Save
+            Favorite
           </Button>
         </CardActions>
       </Card>

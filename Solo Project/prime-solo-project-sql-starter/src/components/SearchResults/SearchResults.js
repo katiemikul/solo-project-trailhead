@@ -71,5 +71,9 @@ class SearchResults extends Component {
     }
 }
 
+// SimpleMediaCard.propTypes = {
+//     classes: PropTypes.object.isRequired,
+//   };
+
 // this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(SearchResults);

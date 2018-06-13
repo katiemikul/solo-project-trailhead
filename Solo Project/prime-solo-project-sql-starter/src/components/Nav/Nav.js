@@ -5,6 +5,11 @@ const Nav = () => (
   <div className="navbar">
     <div>
       <ul>
+      <li>
+          <Link to="/user">
+            Home
+          </Link>
+        </li>
         <li>
           <Link to="/search">
             Search
