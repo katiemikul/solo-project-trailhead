@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Nav from '../../components/Nav/Nav';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import SearchResults from '../../components/SearchResults/SearchResults';
 
@@ -117,32 +114,13 @@ class Search extends Component {
                 
             </body>
             <br />
-
-                <Table className="SearchResults">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>
-                                Trail Name
-                            </TableCell>
-                            <TableCell>
-                                Location
-                            </TableCell>
-                            <TableCell>
-                                Length
-                             </TableCell>
-                            <TableCell>
-                                Difficulty
-                            </TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
+    <Card >
                         {this.state.searchTrailsArray.map((trail, i) =>
-                            <TableRow key={i}>
+                            <CardContent key={i}>
                              <SearchResults name={trail.trail_name} location={trail.location} length={trail.length} difficulty={trail.difficulty} history={this.props.history}/>
-                            </TableRow>
+                            </CardContent>
                         )}
-                    </TableBody>
-                </Table>
+                        </Card>
             </div>
         
       );

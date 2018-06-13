@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 
 const mapStateToProps = state => ({
@@ -38,43 +40,33 @@ class SearchResults extends Component {
     render() {
 
         return (
-            <Table className="SearchResults">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>
-                                Trail Name
-                            </TableCell>
-                            <TableCell>
-                                Location
-                            </TableCell>
-                            <TableCell>
-                                Length
-                             </TableCell>
-                            <TableCell>
-                                Difficulty
-                            </TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-            <TableRow>
-                <TableCell>
-                    {this.props.name}
-                </TableCell>
-                <TableCell>
-                    {this.props.location}
-                </TableCell>
-                <TableCell>
-                    {this.props.length}
-                </TableCell>
-                <TableCell>
-                    {this.props.difficulty}
-                </TableCell>
-                <TableCell>
-                    <Button onClick={this.handleSubmit} value={this.props.name} id="trail" variant="raised">View Trail Details</Button>
-                </TableCell>
-            </TableRow>
-            </TableBody>
-    </Table>
+            
+            <Card className="card">
+        <CardMedia
+          className="card"
+          image="trailpics/trail1.jpg"
+          title="hiking trail"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="headline" component="h2">
+            Trail Name: {this.props.name}
+          </Typography>
+          <Typography component="p">
+          Location: {this.props.location}
+          </Typography>
+          <Typography component="p">
+          Length in miles: {this.props.length}
+          </Typography>
+          <Typography component="p">
+          Difficulty: {this.props.difficulty}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small" color="primary" onClick={this.handleSubmit} value={this.props.name} id="trail" variant="raised">
+            View Trail Details
+          </Button>
+        </CardActions>
+      </Card>
         );
     }
 }
