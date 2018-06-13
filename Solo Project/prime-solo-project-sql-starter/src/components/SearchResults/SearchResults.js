@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import Nav from '../../components/Nav/Nav';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
-import TrailDetails from '../../components/TrailDetails/TrailDetails';
+
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -57,6 +55,7 @@ class SearchResults extends Component {
                             </TableCell>
                         </TableRow>
                     </TableHead>
+                    <TableBody>
             <TableRow>
                 <TableCell>
                     {this.props.name}
@@ -74,6 +73,7 @@ class SearchResults extends Component {
                     <Button onClick={this.handleSubmit} value={this.props.name} id="trail" variant="raised">View Trail Details</Button>
                 </TableCell>
             </TableRow>
+            </TableBody>
     </Table>
         );
     }

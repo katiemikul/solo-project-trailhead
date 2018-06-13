@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Nav from '../../components/Nav/Nav';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
-
-// import { USER_ACTIONS } from '../../redux/actions/userActions';
+import CardDetails from '../../components/CardDetails/CardDetails';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -23,7 +18,7 @@ class TrailDetails extends Component {
             trail_name: '',
             location: '',
             detailTrail: {},
-            trailInfo: {},
+            trailInfo: [],
         }
     }
 
@@ -31,10 +26,10 @@ class TrailDetails extends Component {
     detailedTrail = () => {
         console.log(this.props.search);
         axios.get('/api/detail', { params: { trail_name: this.props.search.searchDetails } }).then(response => {
-            console.log(response.data[0].trail_name);
+            console.log(response.data.trail_name);
             console.log(this.props.search.searchDetails);
             this.setState({
-                detailTrail: response.data[0]
+                detailTrail: response.data
             });
             this.trailInfo();
            
@@ -46,7 +41,7 @@ class TrailDetails extends Component {
 
     trailInfo = () => {
         axios.get('/api/detail', { params: {trail_name: this.state.detailTrail.trail_name } }).then(response => {
-            console.log(response.data[0].trail_name);
+            console.log(response.data.trail_name);
             console.log(response.data);
             this.setState({
                 trailInfo: response.data
@@ -79,8 +74,8 @@ class TrailDetails extends Component {
                 {/* {content} */}
 
                 <p>Trail Details</p>
-                {JSON.stringify(this.state.detailTrail.trail_name)}
-                {JSON.stringify(this.state.trailInfo)}
+                <CardDetails trailInfo={this.state.trailInfo}/>
+
             </div>
         );
     }

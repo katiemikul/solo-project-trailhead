@@ -14,7 +14,7 @@ import InfoPage from './components/InfoPage/InfoPage';
 import Search from './components/Search/Search';
 import FavoritePage from './components/FavoritePage/FavoritePage';
 import TrailDetails from './components/TrailDetails/TrailDetails';
-import FeaturedTrails from './components/FeaturedTrails/FeaturedTrails';
+
 
 
 import './styles/main.css';
@@ -49,7 +49,7 @@ const App = () => (
         />
 
  <Route
-          path="/trails"
+          path="/favoritetrails"
           component={FavoritePage}
         />
        
@@ -57,6 +57,11 @@ const App = () => (
           path="/details"
           component={TrailDetails}
         />
+
+        {/* <Route
+          path="/favoritedetails"
+          component={FavoriteDetails}
+        /> */}
 
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />

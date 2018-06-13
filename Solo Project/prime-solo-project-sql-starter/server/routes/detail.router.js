@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     console.log(param);
     pool.query(`SELECT * FROM "trails" WHERE "trail_name" = $1;`, [param])
     .then((results) => {
-        res.send(results.rows)
+        res.send(results.rows[0])
         console.log(results)
     })
     .catch((error) => {

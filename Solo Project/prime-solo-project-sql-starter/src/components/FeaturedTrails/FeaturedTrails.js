@@ -11,19 +11,8 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
   card: {
-    display: 'inline-block',
-    overflow: 'hidden',
-    float: 'left',
-    height: 'auto',
-    // border-radius: '5px',
-    // background-color: '#fff',
-    // box-shadow: '0 1.5rem 4rem rgba(0, 0, 0, 0.15)',
-    padding: '10px',
-    margin: '10px',
-    border: '2px solid black',
-    textAlign: 'center',
     maxWidth: 345,
-    align: 'center',
+    overflow: 'hidden',
   },
 
   media: {

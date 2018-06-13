@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import Nav from '../../components/Nav/Nav';
 import FeaturedTrails from '../../components/FeaturedTrails/FeaturedTrails';
 
@@ -13,9 +12,7 @@ const mapStateToProps = state => ({
 });
 
 class UserPage extends Component {
-  constructor() {
-    super();
-  }
+  
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
