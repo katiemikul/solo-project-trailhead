@@ -18,6 +18,19 @@ router.get('/', (req, res) => {
         });
 });
 
+router.post('/', (req, res) => {
+    if (req.isAuthenticated()) {
+        const queryText = `INSERT INTO "user_trails" ("user_id", "trail_id") VALUES ($1, $2)`;
+        pool.query(queryText, [req.user.id, req.body.trail])
+        .then(res.sendStatus(201))
+        .catch((error) => {
+            console.log('error with post to /favorite', error);
+        })
+    }else {
+        res.sendStatus(403);
+    }
+    
+});
 
 /**
  * POST route template

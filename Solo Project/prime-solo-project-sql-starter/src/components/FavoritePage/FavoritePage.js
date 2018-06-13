@@ -88,9 +88,9 @@ class FavoritePage extends Component {
                 <Nav />
                 {content}
 
-                <h1>
+                <h2 class='feature'>
                     My Saved Trails:
-            </h1>
+            </h2>
             {/* {JSON.stringify(this.state.trailsArray)} */}
             <Table className="SavedTrails">
                     <TableHead>

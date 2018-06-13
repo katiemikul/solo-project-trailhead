@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import axios from 'axios';
 
 
 const styles = {
@@ -18,6 +19,19 @@ const styles = {
     paddingTop: '56.25%', // 16:9
   },
 };
+
+// function postFavorites() {
+//     let trail=this.props.trailInfo.trail_id;
+//     axios({
+//         method: 'POST',
+//         url: '/api/favorite',
+//         data: trail,
+//     }).then((response) => {
+//         console.log('the post worked');
+//     }).catch((error) => {
+//         console.log('error on the post', error);
+//     })
+// }
 
 function SimpleMediaCard(props) {
   const { classes } = props;

@@ -4,7 +4,7 @@ import axios from 'axios';
 import Nav from '../../components/Nav/Nav';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
-import CardDetails from '../../components/CardDetails/CardDetails';
+import CardDetailsSearch from '../../components/CardDetailsSearch/CardDetailsSearch';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -74,7 +74,7 @@ class TrailDetails extends Component {
                 {/* {content} */}
 
                 <p>Trail Details</p>
-                <CardDetails trailInfo={this.state.trailInfo}/>
+                <CardDetailsSearch trailInfo={this.state.trailInfo}/>
 
             </div>
         );

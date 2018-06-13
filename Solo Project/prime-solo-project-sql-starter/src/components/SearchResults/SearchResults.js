@@ -41,7 +41,7 @@ class SearchResults extends Component {
 
         return (
             
-            <Card className="card">
+        <Card className='trail'>
         <CardMedia
           className="card"
           image="trailpics/trail1.jpg"
