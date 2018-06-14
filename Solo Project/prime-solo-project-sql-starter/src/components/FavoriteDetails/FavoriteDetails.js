@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
     search: state.searchTrails,
 });
 
-class TrailDetails extends Component {
+class FavoriteDetails extends Component {
     constructor() {
         super();
         this.state = {
@@ -80,4 +80,4 @@ class TrailDetails extends Component {
     }
 }
 
-export default connect(mapStateToProps)(TrailDetails);
+export default connect(mapStateToProps)(FavoriteDetails);
