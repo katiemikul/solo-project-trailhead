@@ -52,9 +52,11 @@ input[type="submit"] {
 }
 
 .navbar {
+    background-image: url("/src/styles/pictures/road\ hike.jpeg");
   background-color: #124751;
   width: 100%;
   border-radius: 0px;
+  align-self: center;
 }
 
 ul {
@@ -83,8 +85,14 @@ li a:hover {
     color: #eee;
 }
 
-body {
-    background-color: ivory;
-    /* background: url("/public/trailpics/hiking\ trail\ with\ lake\ and\ sunshine.jpg"); */
+.header {
+background-size: contain;
+/* height: auto; 
+    width: auto; 
+    max-width: 400px; 
+    max-height: 400px; */
 }
 
+.trailsave {
+    align-content: center;
+}

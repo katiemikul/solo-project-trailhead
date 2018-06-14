@@ -107,7 +107,7 @@ class FavoritePage extends Component {
     <Card >
                         {this.state.detailsArray.map((trail, i) =>
                             <CardContent key={i}>
-                             <Favorite name={trail.trail_name} location={trail.location} length={trail.length} difficulty={trail.difficulty} history={this.props.history}/>
+                             <Favorite name={trail.trail_name} location={trail.location} image_path={trail.image_path} length={trail.length} difficulty={trail.difficulty} history={this.props.history}/>
                             </CardContent>
                         )}
                         </Card>

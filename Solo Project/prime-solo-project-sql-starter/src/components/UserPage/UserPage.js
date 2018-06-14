@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 });
 
 class UserPage extends Component {
-  
+
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
@@ -38,11 +38,11 @@ class UserPage extends Component {
           <h1
             id="welcome"
           >
-            Welcome, { this.props.user.userName }!
+            Welcome, {this.props.user.userName}!
           </h1>
           {/* <button>Search</button>
           <button>View My Trails</button> */}
-          <br/>
+          <br />
           {/* <button
             onClick={this.logout}
           >
@@ -55,8 +55,7 @@ class UserPage extends Component {
     return (
       <div>
         <Nav />
-        { content }
-
+        {content}
         <FeaturedTrails />
       </div>
     );

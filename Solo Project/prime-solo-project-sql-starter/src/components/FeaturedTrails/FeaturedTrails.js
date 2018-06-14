@@ -15,7 +15,7 @@ const styles = {
     float: 'left',
     padding: '10px',
    margin: '10px',
-   border: '2px solid black',
+   border: '2px solid #124751',
    height: 'auto',
     maxWidth: 345,
     overflow: 'hidden',
@@ -35,7 +35,7 @@ function SimpleMediaCard(props) {
       <Card className={classes.card}>
         <CardMedia
           style={{height: "250px"}}
-          image="trailpics/trail1.jpg"
+          image="trailpics/sunshinelion.jpg"
           title="Sunshine Lions Liar Loop"
         />
         <CardContent>
@@ -51,10 +51,7 @@ function SimpleMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
-            See Trail Details
-          </Button>
-          <Button size="small" color="primary">
+          <Button size="medium" color="primary" className="trailsave" variant="raised">
             Save
           </Button>
         </CardActions>
@@ -78,10 +75,7 @@ function SimpleMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
-            See Trail Details
-          </Button>
-          <Button size="small" color="primary">
+          <Button className="trailsave" size="medium" color="primary" variant="raised">
             Save
           </Button>
         </CardActions>
@@ -105,10 +99,7 @@ function SimpleMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
-            See Trail Details
-          </Button>
-          <Button size="small" color="primary">
+          <Button className="trailsave" size="medium" color="primary" variant="raised">
             Save
           </Button>
         </CardActions>
@@ -132,10 +123,7 @@ function SimpleMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
-            See Trail Details
-          </Button>
-          <Button size="small" color="primary">
+          <Button className="trailsave" size="medium" color="primary" variant="raised">
             Save
           </Button>
         </CardActions>
@@ -159,10 +147,7 @@ function SimpleMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
-            See Trail Details
-          </Button>
-          <Button size="small" color="primary">
+          <Button className="trailsave" size="medium" color="primary" variant="raised">
             Save
           </Button>
         </CardActions>
@@ -186,10 +171,7 @@ function SimpleMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
-            See Trail Details
-          </Button>
-          <Button size="small" color="primary">
+          <Button className="trailsave" size="medium" color="primary" variant="raised">
             Save
           </Button>
         </CardActions>

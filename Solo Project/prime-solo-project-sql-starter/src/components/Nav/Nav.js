@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Nav = () => (
   <div className="navbar">
+  <div className="header">
+  <img src="trailpics/road.jpg"/>
+  </div>
     <div>
       <ul>
       <li>
@@ -20,12 +23,13 @@ const Nav = () => (
             View My Trails
           </Link>
         </li>
-      </ul>
-      <button
-            onClick={this.logout}
-          >
+        <li>
+          <Link to="/home">
             Log Out
-          </button>
+          </Link>
+        </li>
+      </ul>
+      
     </div>
   </div>
 );

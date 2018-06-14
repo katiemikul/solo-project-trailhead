@@ -40,7 +40,8 @@ function SimpleMediaCard(props) {
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
-          image="trailpics/trail1.jpg"
+          image={props.trailInfo.image_path}
+          src=''
           title="hiking trail"
         />
         <CardContent>
@@ -81,6 +82,8 @@ function SimpleMediaCard(props) {
           </Button>
         </CardActions>
       </Card>
+
+
     </div>
   );
 }
