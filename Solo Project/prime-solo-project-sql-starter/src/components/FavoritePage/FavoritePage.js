@@ -2,22 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import Nav from '../../components/Nav/Nav';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import Favorite from '../../components/Favorite/Favorite';
+import FavoriteDetails from '../FavoriteDetails/FavoriteDetails';
 
 const mapStateToProps = state => ({
     user: state.user,
+    search: state.searchTrails,
+
 });
 
 class FavoritePage extends Component {
     constructor() {
         super();
         this.state = {
-            trailsArray: [],
+            trail_name: '',
+            location: '',
+            detailsArray: [],
         }
     }
 
@@ -26,7 +29,7 @@ class FavoritePage extends Component {
         axios.get('/api/favorite').then(response => {
             console.log(response.data);
             this.setState({
-                trailsArray: response.data
+                detailsArray: response.data
             });
         }).catch(error => {
             alert('There was an error getting requested trails!');
@@ -34,103 +37,81 @@ class FavoritePage extends Component {
         });
     }
 
-    componentDidMount = () => {
-        this.getTrails();
+    handleChange = (propertyName) => (event) => {
+        this.setState({
+                trail_name: '',
+                [propertyName]: event.target.value,
+        });
     }
-
-    componentDidUpdate() {
-        if (!this.props.user.isLoading && this.props.user.userName === null) {
-            this.props.history.push('home');
-        }
-    }
-
     sendUserToCorrespondingPage = (urlString) => {
         return () => {
           this.props.history.push(urlString);
         }
       };
 
-    // getTrailDetails = () => {
-    //     axios.get('/api/search').then(response => {
-    //         console.log(response.data);
-    //         this.setState({
-    //             searchTrailsArray: response.data
-    //         });
-    //     }).catch(error => {
-    //         alert('There was an error getting requested trails!');
-    //         console.log(`ERROR trying to GET api/trails: ${error}`);
-    //     });
+    // handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     console.log('selecting trail details')
+
+    //     const action = { type: 'DETAILED_TRAILS', payload: this.props.name };
+    //     this.props.dispatch(action);
+    //     this.sendUserToCorrespondingPage('/details');
+    //     console.log(this.props.name);
+
+    //     this.props.history.push('/details')
     // }
 
-    logout = () => {
-        //   this.props.dispatch(triggerLogout());
-        this.props.history.push('home');
+    componentDidMount = () => {
+        this.getTrails();
     }
 
-    render() {
-        let content = null;
+    // componentDidUpdate() {
+    //     // if (!this.props.user.isLoading && this.props.user.userName === null) {
+    //     //     this.props.history.push('home');
+    //     // }
+    // }
 
-        if (this.props.user.userName) {
-            content = (
-                <div>
-                    <br />
-                    <button
-                        onClick={this.logout}
-                    >
-                        Log Out
-            </button>
-                </div>
-            );
-        }
+    // sendUserToCorrespondingPage = (urlString) => {
+    //     return () => {
+    //       this.props.history.push(urlString);
+    //     }
+    //   };
+
+    // // getTrailDetails = () => {
+    // //     axios.get('/api/search').then(response => {
+    // //         console.log(response.data);
+    // //         this.setState({
+    // //             searchTrailsArray: response.data
+    // //         });
+    // //     }).catch(error => {
+    // //         alert('There was an error getting requested trails!');
+    // //         console.log(`ERROR trying to GET api/trails: ${error}`);
+    // //     });
+    // // }
+
+    // logout = () => {
+    //     //   this.props.dispatch(triggerLogout());
+    //     // this.props.history.push('home');
+    // }
+
+    render() {
+    
 
         return (
             <div>
                 <Nav />
-                {content}
 
-                <h2 class='feature'>
-                    My Saved Trails:
+             <body>   
+        <h2>My Saved Trails:
             </h2>
-            {/* {JSON.stringify(this.state.trailsArray)} */}
-            <Table className="SavedTrails">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>
-                                Trail Name
-                            </TableCell>
-                            <TableCell>
-                                Location
-                            </TableCell>
-                            <TableCell>
-                                Length
-                             </TableCell>
-                            <TableCell>
-                                Difficulty
-                            </TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {this.state.trailsArray.map((trail, i) =>
-                            <TableRow key={i}>
-                                <TableCell>
-                                    {trail.trail_name}
-                                </TableCell>
-                                <TableCell>
-                                    {trail.location}
-                                </TableCell>
-                                <TableCell>
-                                    {trail.length}
-                                </TableCell>
-                                <TableCell>
-                                    {trail.difficulty}
-                                </TableCell>
-                                <TableCell>
-                                    <Button id="trail" variant="raised" onClick={this.sendUserToCorrespondingPage('/details')}>View Trail Details</Button>
-                                </TableCell>
-                            </TableRow>
+    <Card >
+                        {this.state.detailsArray.map((trail, i) =>
+                            <CardContent key={i}>
+                             <Favorite name={trail.trail_name} location={trail.location} length={trail.length} difficulty={trail.difficulty} history={this.props.history}/>
+                            </CardContent>
                         )}
-                    </TableBody>
-                </Table>
+                        </Card>
+                        </body>
             </div>
        
       );

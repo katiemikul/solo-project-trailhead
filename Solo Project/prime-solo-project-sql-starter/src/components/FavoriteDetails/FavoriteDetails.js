@@ -3,135 +3,81 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import Nav from '../../components/Nav/Nav';
 import Button from '@material-ui/core/Button';
+import CardDetailsFavorites from '../CardDetailsFavorites/CardDetailsFavorites';
 
 const mapStateToProps = state => ({
     user: state.user,
+    search: state.searchTrails,
 });
 
-class FavoriteDetails extends Component {
+class TrailDetails extends Component {
     constructor() {
         super();
         this.state = {
-            trailsArray: [],
+            trail_name: '',
+            location: '',
+            detailTrail: {},
+            trailInfo: [],
         }
     }
 
-//Gets trails from the database - NEED TO UPDATE TO PULL FROM JUNCTION TABLE!!
-    getTrails = () => {
-        axios.get('/api/favorite').then(response => {
-            console.log(response.data);
+    //Get request to Database
+    detailedTrail = () => {
+        console.log(this.props.search);
+        axios.get('/api/detail', { params: { trail_name: this.props.search.searchDetails } }).then(response => {
+            console.log(response.data.trail_name);
+            console.log(this.props.search.searchDetails);
             this.setState({
-                trailsArray: response.data
+                detailTrail: response.data
             });
+            this.trailInfo();
+           
         }).catch(error => {
             alert('There was an error getting requested trails!');
-            console.log(`ERROR trying to GET /api/trails: ${error}`);
+            console.log(`ERROR trying to GET api/trails: ${error}`);
         });
     }
 
-    componentDidMount = () => {
-       
+    trailInfo = () => {
+        axios.get('/api/detail', { params: {trail_name: this.state.detailTrail.trail_name } }).then(response => {
+            console.log(response.data.trail_name);
+            console.log(response.data);
+            this.setState({
+                trailInfo: response.data
+            });
+           
+        }).catch(error => {
+            alert('There was an error getting requested trails!');
+            console.log(`ERROR trying to GET api/trails: ${error}`);
+        });
     }
 
-    componentDidUpdate() {
-        // if (!this.props.user.isLoading && this.props.user.userName === null) {
-        //     this.props.history.push('home');
-        // }
-    }
-
-    sendUserToCorrespondingPage = (urlString) => {
-        // return () => {
-        //   this.props.history.push(urlString);
-        // }
-      };
-
-    // postFavorites = () => {
-    //     let trail=this.props.trailInfo.trail_id;
-    //     axios({
-    //         method: 'POST',
-    //         url: '/api/favorite',
-    //         data: trail,
-    //     }).then((response) => {
-    //         console.log('the post worked');
-    //     }).catch((error) => {
-    //         console.log('error on the post', error);
-    //     })
-    // }
-
-    logout = () => {
-        //   this.props.dispatch(triggerLogout());
-        // this.props.history.push('home');
+    componentDidMount() {
+        this.detailedTrail();
     }
 
     render() {
-        let content = null;
-
-        if (this.props.user.userName) {
-            content = (
-                <div>
-                    <br />
-                    <button
-                        onClick={this.logout}
-                    >
-                        Log Out
-            </button>
-                </div>
-            );
-        }
-
+        // let content = null;
+        console.log(this.state.detailTrail.trail_name);
+            console.log(this.props.search.searchDetails);
+            if (this.state.detailTrail.trail_name === this.props.search.searchDetails) {
+                console.log('it worked!!');
+                // this.trailInfo();
+            }
+            else if (this.props.search !== this.props.search.searchDetails.trail_name) {
+                console.log('there was an error');
+            };
         return (
             <div>
                 <Nav />
-                {content}
+                {/* {content} */}
 
-                <h2 class='feature'>
-                    My Saved Trails:
-            </h2>
-            {/* {JSON.stringify(this.state.trailsArray)} */}
-            <Table className="SavedTrails">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>
-                                Trail Name
-                            </TableCell>
-                            <TableCell>
-                                Location
-                            </TableCell>
-                            <TableCell>
-                                Length
-                             </TableCell>
-                            <TableCell>
-                                Difficulty
-                            </TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {this.state.trailsArray.map((trail, i) =>
-                            <TableRow key={i}>
-                                <TableCell>
-                                    {trail.trail_name}
-                                </TableCell>
-                                <TableCell>
-                                    {trail.location}
-                                </TableCell>
-                                <TableCell>
-                                    {trail.length}
-                                </TableCell>
-                                <TableCell>
-                                    {trail.difficulty}
-                                </TableCell>
-                                <TableCell>
-                                    <Button id="trail" variant="raised" onClick={this.sendUserToCorrespondingPage('/details')}>View Trail Details</Button>
-                                </TableCell>
-                            </TableRow>
-                        )}
-                    </TableBody>
-                </Table>
+                <p>Trail Details</p>
+                <CardDetailsFavorites trailInfo={this.state.trailInfo}/>
+
             </div>
-       
-      );
+        );
     }
 }
 
-// this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(FavoriteDetails);
+export default connect(mapStateToProps)(TrailDetails);

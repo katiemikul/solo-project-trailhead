@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FAVORITE_ACTIONS } from '../../redux/actions/favoriteActions'
-
-// import { FAVORITE_ACTIONS } from '../../actions/favoriteActions';
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -13,112 +9,75 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+const mapStateToProps = state => ({
+    user: state.user,
+    search: state.searchTrails,
 
-const mapReduxStateToProps = (reduxState) => ({
-    reduxState,
-    user: reduxState.user,
-}
-);
+});
 
-class CardObject extends Component {
-    constructor(props) {
-        super(props);
+class Favorite extends Component {
+    constructor() {
+        super();
         this.state = {
-            displaySave: this.props.buttonDisplay[0],
-            displayUnsave:  this.props.buttonDisplay[1],
+            trail_name: '',
+            location: '',
+            detailsArray: [],
         }
-        this.saveFavorite = {
-            display: this.state.displaySave,
-        };
-        this.removeFavorite = {
-            display: this.state.displayUnsave,
-        };
-      
     }
 
-    handleFavorite = () => {
-        const data = {
-            object_id: this.props.cardObject._id,
-            type: this.props.type,
-            img_path: this.props.cardObject.img_path,
-            mp3_path: this.props.cardObject.mp3_path,
-            comments: ''
-        }
-        const userName = {
-            username: this.props.reduxState.user.userName,
-        }
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log('selecting trail details')
 
-        this.props.dispatch({ type: FAVORITE_ACTIONS.ADD, payload: data, userName })
-
-        this.saveFavorite = {
-            display: 'none',
-        };
-        this.removeFavorite = {
-            display: 'block',
-        };
-    }
-
-
-    handleUnFavorite = () => {
-        const action = {
-            type: FAVORITE_ACTIONS.DELETE,
-            payload: {
-                object_id: this.props.cardObject._id,
-                username: this.props.user.userName
-            },
-        }
-        // console.log('deleted from handleUnFavorite----------', action);
+        const action = { type: 'DETAILED_TRAILS', payload: this.props.name };
         this.props.dispatch(action);
+        this.sendUserToCorrespondingPage('/favoritedetails');
+        console.log(this.props.name);
 
-        this.saveFavorite = {
-            display: 'block',
-        };
-        this.removeFavorite = {
-            display: 'none',
-        };
+        this.props.history.push('/favoritedetails')
     }
+
+    sendUserToCorrespondingPage = (urlString) => {
+        return () => {
+          this.props.history.push(urlString);
+        }
+      };
 
 
     render() {
-        
-        // console.log('cardDisplay', this.props.path + this.props.cardObject.img_path);
-        console.log('this------card', this);
-
-        let card = <Card key={this.props.cardObject._id} className='card'>
-            <CardMedia onClick={this.playAudio}
-                className='cardMedia'
-                image={(this.props.path + this.props.cardObject.img_path)}
-                title="title"
-            />
-            <CardActions>
-                <Button className="favorite col-sm-12" style={this.saveFavorite} onClick={this.handleFavorite} size="small" color="primary">
-                    <i className="material-icons" >favorite_border</i>
-                    <p>Favorite</p>
-                </Button>
-
-
-                <Button className="favorite col-sm-12" style={this.removeFavorite} onClick={this.handleUnFavorite} size="small" color="primary">
-                    <i className="material-icons">favorite</i>
-                    <p>Unfavorite</p>
-                </Button>
-
-
-            </CardActions>
-
-            <CardActions>
-
-            </CardActions>
-        </Card>
+    
 
         return (
-
-            <div>
-                {card}
-    
-            </div>
-        );
-
+         
+            <Card className='trail'>
+            <CardMedia
+              className="card"
+              image="trailpics/trail1.jpg"
+              title="hiking trail"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="headline" component="h2">
+                Trail Name: {this.props.name}
+              </Typography>
+              <Typography component="p">
+              Location: {this.props.location}
+              </Typography>
+              <Typography component="p">
+              Length in miles: {this.props.length}
+              </Typography>
+              <Typography component="p">
+              Difficulty: {this.props.difficulty}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small" color="primary" onClick={this.handleSubmit} value={this.props.name} id="trail" variant="raised">
+                View Trail Details
+              </Button>
+            </CardActions>
+          </Card>
+            );
+        }
     }
-};
 
-export default connect(mapReduxStateToProps)(CardObject);
+// this allows us to use <App /> in index.js
+export default connect(mapStateToProps)(Favorite);

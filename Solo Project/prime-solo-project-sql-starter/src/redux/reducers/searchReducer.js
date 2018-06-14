@@ -6,8 +6,17 @@ const trail_name = {
 
 const searchDetails = (state = trail_name, action) => {
     if (action.type === 'DETAILED_TRAILS') {
-        return action.payload;
+        return action.payload;}
+    // } else (action.type === 'FAVORITE_TRAILS'); {
+    //     return action.payload;
+    // }
+    return state;
 }
+
+const favoriteDetails = (state = trail_name, action) => {
+    if (action.type === 'FAVORITE_DETAILS') {
+        return action.payload;}
+  
     return state;
 }
 
@@ -25,5 +34,6 @@ const searchDetails = (state = trail_name, action) => {
 //   };
 
 export default combineReducers({
-  searchDetails,
+    searchDetails,
+    favoriteDetails,
 });
