@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
+import FavoriteButton from '../FavoriteButton/FavoriteButton';
 
 
 const styles = {
@@ -40,7 +41,7 @@ function SimpleMediaCard(props) {
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
-          image="trailpics/trail1.jpg"
+          image={props.trailInfo.image_path}
           title="hiking trail"
         />
         <CardContent>
@@ -76,8 +77,8 @@ function SimpleMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
-            Favorite
+          <Button size="small">
+          <FavoriteButton />
           </Button>
         </CardActions>
       </Card>

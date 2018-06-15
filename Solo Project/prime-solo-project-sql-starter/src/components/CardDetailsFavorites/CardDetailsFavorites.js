@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
+import FavoriteButton from '../FavoriteButton/FavoriteButton';
 
 
 const styles = {
@@ -78,7 +79,7 @@ function SimpleMediaCard(props) {
         </CardContent>
         <CardActions>
           <Button size="small" color="primary">
-            Favorite
+          <FavoriteButton />
           </Button>
         </CardActions>
       </Card>

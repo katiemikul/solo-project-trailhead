@@ -32,6 +32,22 @@ router.post('/', (req, res) => {
     
 });
 
+router.delete('/', (req, res) => {
+    if (req.isAuthenticated()) {
+        const queryText = `DELETE FROM "user_trails"
+                            WHERE "person_id" = ($1)
+                            AND trails = ($2);`;
+        pool.query(queryText, [req.user.id, req.body.trait])
+            .then(res.sendStatus(201))
+            .catch((err) => {
+                console.log('Error on trails server POST', err);
+                res.sendStatus(500);
+            });
+    } else {
+        res.sendStatus(403);
+    }
+});
+
 /**
  * POST route template
  */

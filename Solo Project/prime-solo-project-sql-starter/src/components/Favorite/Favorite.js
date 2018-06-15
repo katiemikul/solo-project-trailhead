@@ -49,9 +49,8 @@ class Favorite extends Component {
 
         return (
          
-            <Card className='trail'>
+            <Card className="card">
             <CardMedia
-              className="card"
               image={this.props.image_path}
               src=''
               title="hiking trail"

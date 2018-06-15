@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import CardS from '../CardS/CardS';
 
 
 const mapStateToProps = state => ({
@@ -38,13 +39,14 @@ class SearchResults extends Component {
 
 
     render() {
-
+   
         return (
             
-        <Card className='trail'>
+        <Card className="card">
+        {/* <CardS handleSubmit={this.handleSubmit}/> */}
         <CardMedia
-          className="card"
-          image="trailpics/trail1.jpg"
+          image={this.props.image_path}
+          src={this.props.image_path}
           title="hiking trail"
         />
         <CardContent>
@@ -62,14 +64,15 @@ class SearchResults extends Component {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary" onClick={this.handleSubmit} value={this.props.name} id="trail" variant="raised">
+          <Button size="small" onClick={this.handleSubmit} value={this.props.name} id="trail" variant="raised">
             View Trail Details
           </Button>
         </CardActions>
       </Card>
         );
     }
-}
+  }
+
 
 // SimpleMediaCard.propTypes = {
 //     classes: PropTypes.object.isRequired,
