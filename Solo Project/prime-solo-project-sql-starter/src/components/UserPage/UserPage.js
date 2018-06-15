@@ -56,6 +56,9 @@ class UserPage extends Component {
       <div>
         <Nav />
         {content}
+        <div className="background">
+  <img src="trailpics/backpack2.jpg"/>
+  </div>
         <FeaturedTrails />
       </div>
     );

@@ -96,3 +96,7 @@ background-size: contain;
 .trailsave {
     align-content: center;
 }
+
+.background {
+    opacity: 0.5;
+}

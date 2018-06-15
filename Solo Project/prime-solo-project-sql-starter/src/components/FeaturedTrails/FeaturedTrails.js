@@ -32,6 +32,7 @@ function SimpleMediaCard(props) {
   const { classes } = props;
   return (
     <div>
+      
         <h2 class='feature'>June's Featured Hikes:</h2>
       <Card className={classes.card}>
         <CardMedia
