@@ -33,7 +33,7 @@ function SimpleMediaCard(props) {
   return (
     <div>
       
-        <h2 class='feature'>June's Featured Hikes:</h2>
+        <h1 class='feature'>Featured Hikes:</h1>
       <Card className={classes.card}>
         <CardMedia
           style={{height: "250px"}}
@@ -45,7 +45,7 @@ function SimpleMediaCard(props) {
             Sunshine Lion's Liar Loop
           </Typography>
           <Typography component="p">
-          This enjoyable loop sees less traffic than the main attraction in this area, the Mount Sanitas Loop. The other advantages of this loop include a less arduous ascent on a shiny new trail and a quick, efficient descent.
+          This enjoyable loop sees less traffic than the main attraction in this area. The loop include a less arduous ascent on a new trail and a quick, efficient descent.
           </Typography>
           <br/>
           <Typography component="p">
@@ -53,7 +53,7 @@ function SimpleMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" className="trailsave" variant="raised">
+          <Button size="small" className="trailsave">
             <FavoriteButton />
           </Button>
         </CardActions>
@@ -69,7 +69,7 @@ function SimpleMediaCard(props) {
             Moraine Lake
           </Typography>
           <Typography component="p">
-          Moraine Lake has the iridescent turquoise waters typical of glacier-fed lakes, due to the glacial silt suspended in the water. It is nestled in the Valley of Ten Peaks, ten rugged mountains that surround Moraine Lake.  
+          Moraine Lake has the iridescent turquoise waters typical of glacier-fed lakes. It is nestled in the Valley of Ten Peaks, ten rugged mountains that surround Moraine Lake.  
           </Typography>
           <br/>
           <Typography component="p">
@@ -77,7 +77,7 @@ function SimpleMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button className="trailsave" size="small" variant="raised">
+          <Button className="trailsave" size="small">
           <FavoriteButton />
           </Button>
         </CardActions>
@@ -93,7 +93,7 @@ function SimpleMediaCard(props) {
             Hell Canyon Loop
           </Typography>
           <Typography component="p">
-          This is a challenging hike that's jam-packed with everything; peaks, lakes, long off-trail sections, and great photo opportunities throughout. Complete it as a full day-hike or take some time and enjoy camping along the way. 
+          This is a challenging hike that's jam-packed with everything; peaks, lakes, long off-trail sections, and great photo opportunities throughout. 
           </Typography>
           <br/>
           <Typography component="p">
@@ -101,7 +101,31 @@ function SimpleMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button className="trailsave" size="small" variant="raised">
+          <Button className="trailsave" size="small">
+          <FavoriteButton />
+          </Button>
+        </CardActions>
+      </Card>
+      <Card className={classes.card}>
+        <CardMedia
+          style={{height: "250px"}}
+          image="trailpics/yosemite.jpg"
+          title="Tunnel View"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="headline" component="h2">
+            Tunnel View
+          </Typography>
+          <Typography component="p">
+          This is one of the most recognized views within the park. Look out through the valley towards El Capitan and Bridalveil Fall with Half Dome rising in the background. 
+          </Typography>
+          <br/>
+          <Typography component="p">
+          Yosemite Valley, California
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button className="trailsave" size="small">
           <FavoriteButton />
           </Button>
         </CardActions>
@@ -125,7 +149,7 @@ function SimpleMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button className="trailsave" size="small" variant="raised">
+          <Button className="trailsave" size="small">
           <FavoriteButton />
           </Button>
         </CardActions>
@@ -149,7 +173,7 @@ function SimpleMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button className="trailsave" size="small" variant="raised">
+          <Button className="trailsave" size="small">
           <FavoriteButton />
           </Button>
         </CardActions>
@@ -173,11 +197,36 @@ function SimpleMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button className="trailsave" size="small" variant="raised">
+          <Button className="trailsave" size="small">
           <FavoriteButton />
           </Button>
         </CardActions>
       </Card>
+      <Card className={classes.card}>
+        <CardMedia
+          style={{height: "250px"}}
+          image="trailpics/apollo.jpg"
+          title="Twelve Apostles"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="headline" component="h2">
+            Twelve Apostles
+          </Typography>
+          <Typography component="p">
+          These incredible rock stacks were formed from the limestone cliffs for which this area is known. The constant eroding forces of the ocean hewed large caves into the cliffside. Eventually, over the course of 10-20 million years, these caves became arches. After more time still, these arches succumbed to the ocean's blasting waves and wind, and collapsed into the 45 meter-high rock stacks that remain today. 
+          </Typography>
+          <br/>
+          <Typography component="p">
+          Apollo Bay, Australia
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button className="trailsave" size="small">
+          <FavoriteButton />
+          </Button>
+        </CardActions>
+      </Card>
+
       <br />
 
     </div>

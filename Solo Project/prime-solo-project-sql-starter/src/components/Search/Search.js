@@ -84,26 +84,12 @@ class Search extends Component {
     }
 
     render() {
-        let content = null;
-
-        if (this.props.user.userName) {
-            content = (
-                <div>
-
-                    <button
-                        onClick={this.logout}
-                    >
-                        Log Out
-            </button>
-                </div>
-            );
-        }
 
         return (
             <div>
 
                 <Nav />
-                {content}
+                {/* {content} */}
         <body className="Search" onSubmit={this.handleSubmit}>
                 <h1>
                     Search For Trails

@@ -38,7 +38,7 @@ class UserPage extends Component {
           <h1
             id="welcome"
           >
-            Welcome, {this.props.user.userName}!
+            Welcome, {this.props.user.userName}
           </h1>
           {/* <button>Search</button>
           <button>View My Trails</button> */}
@@ -56,9 +56,9 @@ class UserPage extends Component {
       <div>
         <Nav />
         {content}
-        <div className="background">
+        {/* <div className="background">
   <img src="trailpics/backpack2.jpg"/>
-  </div>
+  </div> */}
         <FeaturedTrails />
       </div>
     );

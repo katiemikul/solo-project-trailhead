@@ -1,5 +1,14 @@
+@font-face {
+    font-family: 'fontspring_demo_-_nexa_rustRg';
+    src: url('Fonts/fontspring-demo-nexarustslab-black1-webfont.woff2') format('woff2'),
+         url('Fonts/fontspring-demo-nexarustslab-black1-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'fontspring_demo_-_nexa_rustRg', 'Courier New';
 }
 
 .feature {
@@ -12,13 +21,25 @@ body {
 }
 
 .instructions {
-    background-color: #275F64;
+    /* background-image: url('/trailpics/backpack.jpg'); */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    align-self: center;
+    display: center;
+    overflow: hidden;
+    /* float:left; */
+    height: auto;
+    /* background-color: #275F64; */
     padding: 5px;
     color: #ece7e7;
 }
 
 form {
-    background-color: #dbd5d5;
+    background-image: url('/trailpics/mountainman.jpg');
+    background-repeat: no-repeat;
+    overflow: hidden;
+    /* opacity: 0.5; */
+    /* background-color: #dbd5d5; */
     width: 30%;
     height: 250px;
     margin: 20px auto;
@@ -52,7 +73,6 @@ input[type="submit"] {
 }
 
 .navbar {
-    background-image: url("/src/styles/pictures/road\ hike.jpeg");
   background-color: #124751;
   width: 100%;
   border-radius: 0px;
@@ -100,3 +120,28 @@ background-size: contain;
 .background {
     opacity: 0.5;
 }
+
+body {
+    /* background-color: #275F64; */
+    background-image: url('/trailpics/like.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card {
+    display: inline-block;
+    overflow: hidden;
+    /* float:left; */
+    height: auto;
+    border-radius: 5px;
+    background-color: ivory;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #124751;
+    text-align: center;
+ }
+
+ .Search {
+     background-color: ivory;
+ }

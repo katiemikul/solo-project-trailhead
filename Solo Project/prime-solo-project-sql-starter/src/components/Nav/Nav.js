@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Nav = () => (
   <div className="navbar">
   <div className="header">
-  <img src="trailpics/road.jpg"/>
+  {/* <img src="trailpics/backback.jpg"/> */}
   </div>
     <div>
       <ul>

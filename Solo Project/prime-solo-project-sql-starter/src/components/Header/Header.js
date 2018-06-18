@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Header = ({ title }) => (
+const Header = () => (
   <div className="instructions">
+  <img src="trailpics/backpack.jpg"/>
     <div>
-      <h1 className="lead">{ title }</h1>
+      <h1 className="lead"></h1>
     </div>
   </div>
 );

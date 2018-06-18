@@ -23,7 +23,7 @@ import './styles/main.css';
 
 const App = () => (
   <div>
-    <Header title="Trailhead" />
+    <Header/>
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />

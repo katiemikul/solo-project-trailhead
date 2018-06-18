@@ -78,8 +78,8 @@ function SimpleMediaCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
-          <FavoriteButton />
+          <Button size="small">
+          <FavoriteButton id={props.trailInfo.trail_id}/>
           </Button>
         </CardActions>
       </Card>

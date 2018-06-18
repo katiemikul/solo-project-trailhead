@@ -32,13 +32,13 @@ class FavoriteButton extends Component {
 
     handleChange = id => event => {
         if (this.state.favoriteChecked === false) {
-            this.props.dispatch({ type: 'POST_TRAIL', payload: this.props.favorite })
+            this.props.dispatch({ type: 'POST_TRAIL', payload: id })
             this.setState({
                 favoriteChecked: true,
             });
         } else if (this.state.favoriteChecked === true){
             console.log('You need to add an update to the state!')
-            this.props.dispatch({ type: 'DELETE_TRAIL', payload: this.props.favorite })
+            this.props.dispatch({ type: 'DELETE_TRAIL', payload: id })
             this.setState({
                 favoriteChecked: false,
             });

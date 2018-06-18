@@ -70,7 +70,7 @@ class Favorite extends Component {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small" color="primary" onClick={this.handleSubmit} value={this.props.name} id="trail" variant="raised">
+              <Button size="small" onClick={this.handleSubmit} value={this.props.name} id="trail" variant="raised">
                 View Trail Details
               </Button>
             </CardActions>
